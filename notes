@@ -1,3 +1,5 @@
+// in preferences->settings-user, add this line to your config
+
 {
 	"update_check": false
 }
