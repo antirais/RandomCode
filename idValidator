@@ -1,0 +1,20 @@
+// ==UserScript==
+// @name        ID validator
+// @namespace   all
+// @description Checks if duplicate IDs in DOM excist and alert them
+// @version     1
+// @require     http://code.jquery.com/jquery-2.0.0.min.js
+// ==/UserScript==
+
+(function () {
+    var duplicates = [];
+    $('[id]').each(function () {
+        var ids = $('[id=' + this.id + ']');
+        if (ids.length > 1 && ids[0] === this) {
+            duplicates.push(this.id);
+        }
+    });
+    if (duplicates.length) {
+        alert('IDs used more than once: '+duplicates.toSource());
+    }
+})();
