@@ -7,14 +7,19 @@
 // ==/UserScript==
 
 (function () {
+    var ids = {};
     var duplicates = [];
-    $('[id]').each(function () {
-        var ids = $('[id=' + this.id + ']');
-        if (ids.length > 1 && ids[0] === this) {
-            duplicates.push(this.id);
-        }
+    
+    $('[id]').each(function(){
+    var idName = this.getAttribute('id');
+
+    ids[idName] 
+        ?   duplicates.push(idName)
+        :   ids[idName] = this.getAttribute('id');
+
     });
-    if (duplicates.length) {
-        alert('IDs used more than once: '+duplicates.toSource());
+    
+    if(duplicates.length){
+        alert("Duplicates: "+duplicates.toSource());
     }
 })();
